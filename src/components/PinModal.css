@@ -1,0 +1,206 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-container {
+    background-color: white;
+    border-radius: 16px;
+    max-width: 900px;
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-image-section {
+    flex: 1;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    min-height: 0;
+    /* Important for flex child scrolling/sizing */
+}
+
+.modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.modal-info-section {
+    flex: 0 0 auto;
+    padding: 20px 24px;
+    background-color: white;
+    border-top: 1px solid #eee;
+    max-height: 35%;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.modal-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--color-text);
+}
+
+.modal-description {
+    font-size: 14px;
+    color: var(--color-text);
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
+.modal-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    padding-top: 12px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.author-avatar-lg {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.author-details {
+    flex: 1;
+}
+
+.author-name-lg {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.author-followers {
+    font-size: 12px;
+    color: var(--color-gray);
+}
+
+.follow-btn {
+    background-color: #efefef;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.follow-btn:hover {
+    background-color: #e2e2e2;
+}
+
+.modal-comments {
+    display: none;
+    /* Hide comments to save space as requested */
+}
+
+.close-btn-mobile {
+    display: flex;
+    /* Always show close button on top of image */
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    border: none;
+    cursor: pointer;
+}
+
+.close-btn-mobile:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.nav-arrow-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 20px;
+    z-index: 2010;
+    opacity: 0.7;
+    transition: opacity 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-arrow-btn:hover {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.nav-arrow-btn.prev {
+    left: 20px;
+}
+
+.nav-arrow-btn.next {
+    right: 20px;
+}
+
+@media (max-width: 768px) {
+    .modal-overlay {
+        padding: 0;
+    }
+
+    .modal-container {
+        border-radius: 0;
+        height: 100vh;
+    }
+
+    .nav-arrow-btn {
+        display: none;
+        /* Hide arrows on mobile, use swipe? or keep them small */
+    }
+}
