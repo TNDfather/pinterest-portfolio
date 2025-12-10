@@ -29,7 +29,7 @@ const PinModal = ({ pin, onClose, onNext, onPrev }) => {
 
                 <div className="modal-content">
                     <div className="modal-image-section">
-                        <img src={pin.image} alt={pin.title} className="modal-image" />
+                        <img src={pin.image} alt={pin.title} className="modal-image" referrerPolicy="no-referrer" />
                     </div>
 
                     <div className="modal-info-section">

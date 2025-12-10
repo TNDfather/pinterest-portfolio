@@ -4,8 +4,12 @@ import Papa from 'papaparse';
 const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRqO4zYvISfAOws2mbnEvd2OvkLqFVI8lcjKy4aDzz3QbOKYHDmtUuDjrNPb3H9IpG7rkg1WoqYyLHv/pub?gid=0&single=true&output=csv';
 
 export const fetchSheetData = (url = SHEET_URL) => {
+    // Add cache buster
+    const cacheBuster = `&t=${new Date().getTime()}`;
+    const finalUrl = url + cacheBuster;
+
     return new Promise((resolve, reject) => {
-        Papa.parse(url, {
+        Papa.parse(finalUrl, {
             download: true,
             header: true,
             complete: (results) => {
@@ -22,10 +26,17 @@ const getDirectImage = (url) => {
     if (!url) return null;
     // Check if it's a Google Drive link
     if (url.includes('drive.google.com')) {
-        // Extract ID
-        const idMatch = url.match(/\/d\/(.*?)\//);
+        // Try to extract ID from /d/ID format
+        let idMatch = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+
+        // If not found, try id=ID format
+        if (!idMatch) {
+            idMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+        }
+
         if (idMatch && idMatch[1]) {
-            return `https://lh3.googleusercontent.com/d/${idMatch[1]}`;
+            // Using lh3.googleusercontent.com is generally more reliable for embedding
+            return `https://lh3.googleusercontent.com/d/${idMatch[1]}=w1000`;
         }
     }
     return url;

@@ -6,7 +6,7 @@ const PinCard = ({ image, title, description, author, onClick }) => {
     return (
         <div className="pin-card" onClick={onClick}>
             <div className="pin-image-wrapper">
-                <img src={image} alt={title} className="pin-image" />
+                <img src={image} alt={title} className="pin-image" referrerPolicy="no-referrer" />
                 <div className="pin-overlay">
                     <button className="save-btn" onClick={(e) => e.stopPropagation()}>Save</button>
                     <div className="overlay-actions">
