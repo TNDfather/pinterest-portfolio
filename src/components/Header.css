@@ -150,12 +150,48 @@
 }
 
 @media (max-width: 768px) {
-    .header-nav {
-        display: none;
+    .header {
+        flex-wrap: wrap;
+        height: auto;
+        padding-bottom: 12px;
+        gap: 8px;
+    }
+
+    .header-logo {
+        margin-right: auto; /* Push actions to the right */
+        order: 1;
+    }
+
+    .header-actions {
+        order: 2;
     }
 
     .header-search {
+        display: flex;
+        order: 3;
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .header-nav {
+        display: flex;
+        order: 4;
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 4px; /* Space for scrollbar if any */
+        margin-right: 0;
+        /* Hide scrollbar for cleaner look */
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+    .header-nav::-webkit-scrollbar {
         display: none;
-        /* Simplify for mobile for now */
+    }
+
+    .nav-btn {
+        white-space: nowrap;
+        font-size: 14px;
+        padding: 8px 12px;
     }
 }
