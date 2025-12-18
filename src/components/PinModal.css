@@ -141,7 +141,7 @@
     display: flex;
     /* Always show close button on top of image */
     position: absolute;
-    top: 16px;
+    top: 80px;
     left: 16px;
     background: rgba(0, 0, 0, 0.5);
     color: white;
