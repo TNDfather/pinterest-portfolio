@@ -3,7 +3,8 @@
   --color-text: #111111;
   --color-gray: #767676;
   --color-hover: #f0f0f0;
-  --color-primary: #e60023; /* Pinterest Red */
+  --color-primary: #e60023;
+  /* Pinterest Red */
   --radius-xl: 32px;
   --radius-lg: 16px;
   --radius-md: 12px;
@@ -37,4 +38,15 @@ input {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.main-content {
+  margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-top: 140px;
+    /* Adjust for fixed header height on mobile */
+  }
 }

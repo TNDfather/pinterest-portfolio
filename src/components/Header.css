@@ -156,6 +156,14 @@
         min-height: 60px;
         padding-bottom: 12px;
         gap: 8px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-bg);
+        /* Ensure background is opaque */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        /* Ensure shadow is visible */
     }
 
     .header-logo {

@@ -90,7 +90,7 @@ function App() {
         onProfileClick={() => setShowPdfModal(true)}
         onCreateClick={() => setShowCreateModal(true)}
       />
-      <main style={{ marginTop: '16px' }}>
+      <main className="main-content">
         {loading && <div style={{ textAlign: 'center', padding: '20px' }}>Loading...</div>}
         {error && <div style={{ textAlign: 'center', color: 'red', padding: '10px' }}>Note: Using placeholder data (Sheet load failed)</div>}
 
