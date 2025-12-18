@@ -5,7 +5,7 @@ import './Header.css';
 const COMPANIES = ['All', 'HOMEPLUS', 'ELAND', 'MODERN HOUSE', 'CF Production'];
 const PARTS = ['All', 'AI', 'BRANDING', 'GRAPHIC', 'PACKAGE', 'PHOTOGRAPHY', 'VMD', 'COMMERCIAL FILM'];
 
-const Header = ({ onFilter, onPartFilter, onProfileClick, onCreateClick }) => {
+const Header = ({ onFilter, onPartFilter, onProfileClick, onCreateClick, onSearch }) => {
     const [showCompanyDropdown, setShowCompanyDropdown] = useState(false);
     const [showPartDropdown, setShowPartDropdown] = useState(false);
     const [selectedCompany, setSelectedCompany] = useState('All');
@@ -88,7 +88,11 @@ const Header = ({ onFilter, onPartFilter, onProfileClick, onCreateClick }) => {
             <div className="header-search">
                 <div className="search-wrapper">
                     <Search className="search-icon" size={20} />
-                    <input type="text" placeholder="Search" />
+                    <input
+                        type="text"
+                        placeholder="Search"
+                        onChange={(e) => onSearch(e.target.value)}
+                    />
                 </div>
             </div>
             <div className="header-actions">

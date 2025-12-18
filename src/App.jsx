@@ -29,6 +29,7 @@ function App() {
   const [selectedPin, setSelectedPin] = useState(null);
   const [filterCompany, setFilterCompany] = useState(null);
   const [filterPart, setFilterPart] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
   const [showPdfModal, setShowPdfModal] = useState(false);
   const [showCreateModal, setShowCreateModal] = useState(false);
 
@@ -79,7 +80,16 @@ function App() {
   const filteredPins = pins.filter(pin => {
     const matchCompany = filterCompany ? pin.author && pin.author.toLowerCase().includes(filterCompany.toLowerCase()) : true;
     const matchPart = filterPart ? pin.part && pin.part.toLowerCase().includes(filterPart.toLowerCase()) : true;
-    return matchCompany && matchPart;
+
+    const query = searchQuery.toLowerCase();
+    const matchSearch = searchQuery
+      ? (pin.title && pin.title.toLowerCase().includes(query)) ||
+      (pin.description && pin.description.toLowerCase().includes(query)) ||
+      (pin.author && pin.author.toLowerCase().includes(query)) ||
+      (pin.part && pin.part.toLowerCase().includes(query))
+      : true;
+
+    return matchCompany && matchPart && matchSearch;
   });
 
   return (
@@ -89,6 +99,7 @@ function App() {
         onPartFilter={setFilterPart}
         onProfileClick={() => setShowPdfModal(true)}
         onCreateClick={() => setShowCreateModal(true)}
+        onSearch={setSearchQuery}
       />
       <main className="main-content">
         {loading && <div style={{ textAlign: 'center', padding: '20px' }}>Loading...</div>}
